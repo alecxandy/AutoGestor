@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -20,4 +22,5 @@ public class Teacher {
     private String nome;
     private String cpf;
     private String email;
+    private LocalDate dtNascimento;
 }

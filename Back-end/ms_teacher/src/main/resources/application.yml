@@ -7,7 +7,7 @@ spring:
     password: Cola132305
 
   application:
-    name: ms_teacher
+    name: msteacher
 
 server:
   port: 0

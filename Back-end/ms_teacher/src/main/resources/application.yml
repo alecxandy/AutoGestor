@@ -1,13 +1,23 @@
 
 spring:
+  application:
+    name: msteacher
+
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/db_guru
+    url: jdbc:postgresql://localhost:5432/professor_db
     username: postgres
     password: Cola132305
 
-  application:
-    name: msteacher
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+        ddl-auto: update
+    properties:
+        hibernate:
+          format_sql: true
+          show_sql: true
+
 
 server:
   port: 0

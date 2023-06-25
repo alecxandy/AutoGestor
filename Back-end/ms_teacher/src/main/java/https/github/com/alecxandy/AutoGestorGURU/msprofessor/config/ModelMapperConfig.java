@@ -1,4 +1,4 @@
-package https.github.com.alecxandy.AutoGestorGURU.msprofessor.config.modelMapper;
+package https.github.com.alecxandy.AutoGestorGURU.msprofessor.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

@@ -1,5 +1,6 @@
 package https.github.com.alecxandy.AutoGestorGURU.msprofessor.service;
 
+import https.github.com.alecxandy.AutoGestorGURU.msprofessor.exception.IdentifierNotFoundException;
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.Teacher;
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.repository.TeacherRepository;
 import org.modelmapper.ModelMapper;
@@ -33,13 +34,14 @@ public class TeacherService {
     }
 
     public Teacher findById(Long id) {
-        return teacherRepository.findById(id).orElseThrow(() -> new RuntimeException(""));
+        return teacherRepository.findById(id).orElseThrow(() -> new IdentifierNotFoundException());
     }
 
     public void deleteById(Long id) {
-        teacherRepository.findById(id).ifPresent(teacher -> {
+        teacherRepository.findById(id).map(teacher -> {
             teacherRepository.deleteById(id);
-        });
+            return teacher;
+        }).orElseThrow(() -> new IdentifierNotFoundException());
     }
 
     public Teacher update(Teacher teacher, Long id) {
@@ -51,7 +53,7 @@ public class TeacherService {
             t.setName(teacher.getName());
             teacherRepository.save(t);
             return t;
-        }).orElseThrow(() -> new RuntimeException(""));
+        }).orElseThrow(() -> new IdentifierNotFoundException());
     }
 
     public List<Teacher> findByNameContaining(String name) {

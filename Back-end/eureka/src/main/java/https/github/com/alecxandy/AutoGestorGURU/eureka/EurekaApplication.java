@@ -12,4 +12,11 @@ public class EurekaApplication {
 		SpringApplication.run(EurekaApplication.class, args);
 	}
 
+	//comando gerar buid da aplicação
+	// ./mvnw clean package -DskipTests
+	// cd target
+	// java -jar .\eureka-0.0.1- SNAPSHOT.jar
+
+
+
 }

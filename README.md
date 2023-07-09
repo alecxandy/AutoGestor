@@ -2,20 +2,28 @@
 
 Bem-vindo(a) ao Sistema de Autoescola desenvolvido em Spring Boot! Este sistema é uma solução abrangente para o gerenciamento eficiente e simplificado de uma autoescola, desde a matrícula dos alunos até a obtenção da carteira de habilitação. Siga as instruções abaixo para configurar e utilizar o sistema corretamente.
 
+## Modelo de Dados
+
+
+![Modelo Relacional](https://trello.com/1/cards/6486497c0eeb66c7dc25bbc6/attachments/64901ad569ac941c7797d014/previews/64901ad669ac941c7797d0d0/download/model02.png)
+
 ## Requisitos do Sistema
 
-- Java 8 ou superior
+- Java 17 ou superior
 - Maven
-- Banco de dados (por exemplo, MySQL, PostgreSQL)
+- Banco de dados PostgreSQL.
 
 ## Configuração do Banco de Dados
 
 1. Crie um banco de dados vazio no seu sistema de banco de dados preferido.
-2. Configure as informações de conexão com o banco de dados no arquivo `application.properties`, localizado no diretório `src/main/resources`. Por exemplo:
+2. Configure as informações de conexão com o banco de dados no arquivo `application.yml`, localizado no diretório `src/main/resources`. Por exemplo:
    ```
-   spring.datasource.url=jdbc:mysql://localhost:3306/nome_do_banco
-   spring.datasource.username=usuario
-   spring.datasource.password=senha
+   spring:
+      datasource:
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://localhost:5432/nome_banco
+          username: postgres
+          password: 
    ```
 
 ## Executando o Sistema
@@ -32,12 +40,6 @@ Bem-vindo(a) ao Sistema de Autoescola desenvolvido em Spring Boot! Este sistema 
    ```
 5. O sistema estará disponível em `http://localhost:8080`.
 
-## Configuração Adicional
-
-- Para personalizar as configurações do sistema, consulte o arquivo `application.properties` no diretório `src/main/resources`.
-- Certifique-se de configurar as credenciais corretas para envio de e-mails no arquivo `application.properties` para permitir o envio de notificações e lembretes automáticos aos alunos.
-- Personalize as páginas, estilos e templates do sistema conforme necessário, localizados no diretório `src/main/resources/templates` e `src/main/resources/static`.
-
 ## Funcionalidades Principais
 
 1. Cadastro de Alunos: Os alunos podem se inscrever na autoescola, fornecendo informações pessoais, contatos e documentos necessários.
@@ -46,6 +48,4 @@ Bem-vindo(a) ao Sistema de Autoescola desenvolvido em Spring Boot! Este sistema 
 4. Preparação para Exames: Recursos disponíveis para os alunos estudarem para os exames teóricos e práticos, incluindo materiais de estudo e simulados.
 5. Emissão de Documentos: O sistema gera documentos importantes, como declarações de conclusão de curso, boletos de pagamento e requerimentos para exames.
 6. Integração com Órgãos de Trânsito: O sistema se integra aos órgãos de trânsito, permitindo o envio de dados dos alunos, agendamento de exames e recebimento de notificações sobre o status dos processos.
-7. Controle Financeiro: Possibilidade de registrar pagamentos de matrículas, mensalidades, taxas de exame e emitir rel
-
-atórios financeiros detalhados.
+7. Controle Financeiro: Possibilidade de registrar pagamentos de matrículas, mensalidades, taxas de exame e emitir relatórios financeiros detalhados.

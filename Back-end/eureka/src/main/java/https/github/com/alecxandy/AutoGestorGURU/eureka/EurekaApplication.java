@@ -30,6 +30,10 @@ public class EurekaApplication {
 	//criar um network para comunicao entre os microservicos
 	//docker network create network
 
+	//criando uma imagem e container postgresql com banco de dados
+	//docker run --name some-postgres -p 5433:5432 -e POSTGRES_PASSWORD=123456 e- POSTGRES_DB=endereco_db --network network
+	// -d postgres
+
     /*
     FROM openjdk:17
     WORKDIR /app

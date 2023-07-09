@@ -1,6 +1,6 @@
-package https.github.com.alecxandy.AutoGestorGURU.msprofessor.handler;
+package com.examplehttps.github.com.alecxandy.AutoGestorGURU.ms_endereco.handler;
 
-import https.github.com.alecxandy.AutoGestorGURU.msprofessor.exception.IdentifierNotFoundException;
+import com.examplehttps.github.com.alecxandy.AutoGestorGURU.ms_endereco.exception.IdentifierNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -25,8 +25,4 @@ public class RestExceptionhandler {
             return erros;
         }
     }
-
-
-
-
 }

@@ -1,13 +1,13 @@
-package https.github.com.alecxandy.AutoGestorGURU.msprofessor;
+package com.examplehttps.github.com.alecxandy.AutoGestorGURU.ms_endereco;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MsteacherApplication {
+public class MsAddressApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MsteacherApplication.class, args);
+		SpringApplication.run(MsAddressApplication.class, args);
 	}
 
 	//comando gerar build/jar da aplicação sem testes
@@ -46,6 +46,5 @@ public class MsteacherApplication {
 	COPY . .
 	RUN mvn clean package -DskipTests
     */
-
 
 }

@@ -21,6 +21,9 @@ public class GatewayApplication {
 				.route(p -> p
 						.path("/teacher/**")
 						.uri("lb://msteacher"))
+				.route(p -> p
+						.path("/address/**")
+						.uri("lb://msaddress"))
 				.build();
 	}
 

@@ -15,7 +15,7 @@ Bem-vindo(a) ao Sistema de Autoescola desenvolvido em Spring Boot! Este sistema 
 
 ## Configuração do Banco de Dados
 
-1. Crie um banco de dados vazio no seu sistema de banco de dados preferido.
+1. Crie um banco de dados vazio no seu sistema de banco de dados Postgresql.
 2. Configure as informações de conexão com o banco de dados no arquivo `application.yml`, localizado no diretório `src/main/resources`. Por exemplo:
    ```
    spring:

@@ -1,4 +1,4 @@
-package https.github.com.alecxandy.AutoGestorGURU.msprofessor.model;
+package https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -21,6 +21,9 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotNull(message = "value cannot be null")
+    private Long Address_id;
 
     @NotNull(message = "value cannot be null")
     private String name;

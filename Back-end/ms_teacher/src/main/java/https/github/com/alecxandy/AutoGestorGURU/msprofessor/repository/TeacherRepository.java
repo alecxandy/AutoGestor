@@ -1,6 +1,6 @@
 package https.github.com.alecxandy.AutoGestorGURU.msprofessor.repository;
 
-import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.Teacher;
+import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.entity.Teacher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

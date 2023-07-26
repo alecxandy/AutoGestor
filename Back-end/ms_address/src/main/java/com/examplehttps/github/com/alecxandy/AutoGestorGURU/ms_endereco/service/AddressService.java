@@ -7,40 +7,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AddressService {
 
     @Autowired
-    private AddressRepository addressRepository;
+    private final AddressRepository addressRepository;
+
 
     public AddressService(AddressRepository addressRepository) {
         this.addressRepository = addressRepository;
     }
 
-
-    public Address save(Address address) {
-        return addressRepository.save(address);
+    public Long save(Address address) {
+        return addressRepository.save(address).getId();
     }
 
     public List<Address> listAll() {
         return addressRepository.findAll();
     }
 
-    public Address findById(Long id) {
-        return addressRepository.findById(id).orElseThrow(() -> new IdentifierNotFoundException());
+    public Optional<Address> findById(Long id) {
+        Address address = addressRepository.findById(id).orElseThrow(IdentifierNotFoundException::new);
+        return Optional.of(address);
     }
 
     public void deleteById(Long id) {
         addressRepository.findById(id).map(a -> {
             addressRepository.deleteById(id);
             return a;
-        }).orElseThrow(() -> new IdentifierNotFoundException());
+        }).orElseThrow(IdentifierNotFoundException::new);
     }
 
-    public Address update(Address address, Long id) {
-        return addressRepository.findById(id).map(a -> {
-            a.setId(id);
+    public Address update(Address address) {
+        return addressRepository.findById(address.getId()).map(a -> {
             a.setRoad(address.getRoad());
             a.setCity(address.getCity());
             a.setState(address.getState());
@@ -48,11 +49,8 @@ public class AddressService {
             a.setZipCode(address.getZipCode());
             addressRepository.save(a);
             return a;
-        }).orElseThrow(() -> new IdentifierNotFoundException());
+        }).orElseThrow(IdentifierNotFoundException::new);
     }
 
 
-    public List<Address> findByCityContaining(String city) {
-        return addressRepository.findByCityContaining(city);
-    }
 }

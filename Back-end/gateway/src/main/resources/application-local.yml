@@ -2,8 +2,6 @@
 spring:
   application:
     name: mscloudgateway
-  profiles:
-    active: local #configuração local. Para rodar no docker é necessario retirar essa config
 
   cloud:
     gateway:
@@ -20,7 +18,7 @@ eureka:
     fetchRegistry: true
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://eureka:8761/eureka
+      defaultZone: http://localhost:8761/eureka
 
 
 

@@ -2,6 +2,8 @@
 spring:
   application:
     name: msaddress
+  profiles:
+    active: local #configuração local. Para rodar no docker é necessario retirar essa config
 
   datasource:
     driver-class-name: org.postgresql.Driver

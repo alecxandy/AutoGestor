@@ -1,24 +1,22 @@
 
 spring:
   application:
-    name: msteacher
-  profiles:
-    active: local #configuração local. Para rodar no docker é necessario retirar essa config
+    name: msaddress
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://postgres-teacher-db:5432/teacher_db
+    url: jdbc:postgresql://localhost:5432/address_db
     username: postgres
-    password: zxcvbnm123
+    password: Cola132305
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-        ddl-auto: update
+      ddl-auto: update
     properties:
-        hibernate:
-          format_sql: true
-          show_sql: true
+      hibernate:
+        format_sql: true
+        show_sql: true
 
 server:
   port: 0
@@ -26,6 +24,6 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka:8761/eureka
+      defaultZone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

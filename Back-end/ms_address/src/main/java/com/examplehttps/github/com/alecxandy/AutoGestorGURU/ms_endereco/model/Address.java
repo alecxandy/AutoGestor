@@ -29,6 +29,9 @@ public class Address {
     private String city;
 
     @NotNull(message = "value cannot be null")
+    private String district;
+
+    @NotNull(message = "value cannot be null")
     private String road;
 
     @NotNull(message = "value cannot be null")

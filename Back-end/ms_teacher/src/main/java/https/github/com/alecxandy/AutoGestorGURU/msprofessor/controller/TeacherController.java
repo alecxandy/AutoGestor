@@ -1,8 +1,8 @@
 package https.github.com.alecxandy.AutoGestorGURU.msprofessor.controller;
 
-import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.Teacher;
+import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.dto.TeachAddressDTO;
+import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.dto.TeacherAddressResponseDTO;
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.service.TeacherService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,17 +21,18 @@ public class TeacherController {
     }
 
     @PostMapping
-    public ResponseEntity<Teacher> save(@RequestBody @Valid Teacher teacher) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(teacherService.save(teacher));
+    public ResponseEntity<TeacherAddressResponseDTO> save(@RequestBody TeachAddressDTO teachAddressDTO) {
+        System.out.println(teachAddressDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(teacherService.save(teachAddressDTO));
     }
 
     @GetMapping
-    public ResponseEntity<List<Teacher>> listAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(teacherService.listAll());
+    public ResponseEntity<List<TeacherAddressResponseDTO>> list() {
+        return ResponseEntity.status(HttpStatus.OK).body(teacherService.list());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Teacher> findById(@PathVariable Long id) {
+    public ResponseEntity<TeacherAddressResponseDTO> findById(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(teacherService.findById(id));
     }
 
@@ -41,14 +42,15 @@ public class TeacherController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Teacher> update(@RequestBody @Valid Teacher teacher, @PathVariable(name = "id") Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(teacherService.update(teacher, id));
+    @PutMapping
+    public ResponseEntity<TeacherAddressResponseDTO> update(@RequestBody TeachAddressDTO teachAddressDTO) {
+        return ResponseEntity.status(HttpStatus.OK).body(teacherService.update(teachAddressDTO));
     }
 
-    @GetMapping("search/{name}")
-    public ResponseEntity<List<Teacher>> findByNameContaining(@PathVariable(name = "name") @Valid String name) {
+    @GetMapping("/search/{name}")
+    public ResponseEntity<List<TeacherAddressResponseDTO>> findByNameContaining(@PathVariable(name = "name") String name) {
         return ResponseEntity.status(HttpStatus.OK).body(teacherService.findByNameContaining(name));
     }
+
 
 }

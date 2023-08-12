@@ -3,19 +3,20 @@ package https.github.com.alecxandy.AutoGestorGURU.msprofessor.service;
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.exception.IdentifierNotFoundException;
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.infra.AddressResourceClient;
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.dto.AddressDTO;
-import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.entity.Teacher;
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.dto.TeachAddressDTO;
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.dto.TeacherAddressResponseDTO;
+import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.entity.Teacher;
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.repository.TeacherRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class TeacherService {
-
     @Autowired
     private final TeacherRepository teacherRepository;
     @Autowired
@@ -37,9 +38,9 @@ public class TeacherService {
 
     }
 
-    public List<TeacherAddressResponseDTO> list() {
+    public List<TeacherAddressResponseDTO> list(Pageable pageable) {
         List<TeacherAddressResponseDTO> list = new ArrayList<>();
-        for (Teacher t : teacherRepository.findAll()) {
+        for (Teacher t : teacherRepository.findAll(pageable)) {
             TeacherAddressResponseDTO teacherAddressResponseDTO = modelMapper.map(t, TeacherAddressResponseDTO.class);
             teacherAddressResponseDTO.setAddressDTO(addressResourceClient.findById(t.getAddress_id()).getBody().get());
             list.add(teacherAddressResponseDTO);
@@ -64,12 +65,9 @@ public class TeacherService {
 
     public TeacherAddressResponseDTO update(TeachAddressDTO teachAddressDTO) {
         Teacher t = teacherRepository.findById(teachAddressDTO.getTeacher().getId()).orElseThrow(() -> new IdentifierNotFoundException());
-
         Teacher teacher = teachAddressDTO.getTeacher();
         AddressDTO addressDTO = teachAddressDTO.getAddressDTO();
-
         addressDTO.setId(t.getAddress_id());
-
         teacher.setAddress_id(addressResourceClient.save(addressDTO).getBody().longValue());
         return findById(teacherRepository.save(teacher).getId());
     }

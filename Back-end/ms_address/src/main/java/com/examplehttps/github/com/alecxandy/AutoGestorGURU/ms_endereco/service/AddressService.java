@@ -4,9 +4,10 @@ import com.examplehttps.github.com.alecxandy.AutoGestorGURU.ms_endereco.exceptio
 import com.examplehttps.github.com.alecxandy.AutoGestorGURU.ms_endereco.model.Address;
 import com.examplehttps.github.com.alecxandy.AutoGestorGURU.ms_endereco.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,8 +25,8 @@ public class AddressService {
         return addressRepository.save(address).getId();
     }
 
-    public List<Address> listAll() {
-        return addressRepository.findAll();
+    public Page<Address> listAll(Pageable pageable) {
+        return addressRepository.findAll(pageable);
     }
 
     public Optional<Address> findById(Long id) {

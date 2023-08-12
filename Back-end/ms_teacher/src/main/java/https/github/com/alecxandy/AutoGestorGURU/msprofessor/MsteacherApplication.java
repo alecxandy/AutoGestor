@@ -32,6 +32,7 @@ public class MsteacherApplication {
 
 	//criando uma imagem e container postgresql com banco de dados
 	//docker run --name some-postgres -p 5433:5432 -e POSTGRES_PASSWORD=123456 e- POSTGRES_DB=endereco_db --network network
+	//docker run --name postgres-teacher-db -p 5434:5432 -e POSTGRES_PASSWORD=zxcvbnm123 e- POSTGRES_DB=teacher_db --network network
 	// -d postgres
 
     /*

@@ -16,15 +16,12 @@ public class GatewayApplication {
 	}
 
 	@Bean
-
 	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
 		return builder.routes()
-				.route(p -> p
-						.path("/teacher/**")
-						.uri("lb://msteacher"))
-				.route(p -> p
-						.path("/address/**")
-						.uri("lb://msaddress"))
+				.route(p -> p.path("/teacher/**").uri("lb://msteacher"))
+				.route(p -> p.path("/address/**").uri("lb://msaddress"))
+				.route(p -> p.path("/student/**").uri("lb://msstudent"))
+				.route(p -> p.path("/user/**").uri("lb://msuser"))
 				.build();
 	}
 

@@ -4,6 +4,7 @@ import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.dto.TeachAddr
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.dto.TeacherAddressResponseDTO;
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +28,8 @@ public class TeacherController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TeacherAddressResponseDTO>> list() {
-        return ResponseEntity.status(HttpStatus.OK).body(teacherService.list());
+    public ResponseEntity<List<TeacherAddressResponseDTO>> list(Pageable pageable) {
+        return ResponseEntity.status(HttpStatus.OK).body(teacherService.list(pageable));
     }
 
     @GetMapping("/{id}")

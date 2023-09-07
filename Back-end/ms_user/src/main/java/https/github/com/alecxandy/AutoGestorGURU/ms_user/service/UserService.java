@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -39,5 +42,10 @@ public class UserService {
             return user;
         }).orElseThrow(() -> new IdentifierNotFoundException());
     }
+
+    public User findByCpf(String cpf) {
+        return userRepository.findByCpf(cpf).orElseThrow(() -> new IdentifierNotFoundException());
+    }
+
 
 }

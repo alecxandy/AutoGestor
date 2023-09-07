@@ -36,7 +36,8 @@ public class UserController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable(name = "id") Long id) {
         userService.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.status(HttpStatus.OK).body("\n" +
+                "successfully deleted");
     }
 
     @PutMapping
@@ -44,5 +45,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userService.update(user));
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<User> findByCpf(@RequestParam(name = "cpf", required = true) String cpf) {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.findByCpf(cpf));
+    }
 
 }

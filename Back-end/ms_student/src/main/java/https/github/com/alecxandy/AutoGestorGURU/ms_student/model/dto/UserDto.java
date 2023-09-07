@@ -1,12 +1,11 @@
 package https.github.com.alecxandy.AutoGestorGURU.ms_student.model.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class UserDto {
     private Long id;
     private String name;

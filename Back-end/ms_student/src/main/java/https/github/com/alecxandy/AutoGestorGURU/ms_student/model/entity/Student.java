@@ -14,7 +14,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Table(name = "tb_student")
 public class Student {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -25,6 +24,4 @@ public class Student {
     private String rg;
     private String renach;
     private LocalDate dt_renach;
-
-
 }

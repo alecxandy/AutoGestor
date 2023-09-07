@@ -1,14 +1,13 @@
 package https.github.com.alecxandy.AutoGestorGURU.ms_student.model.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class StudentResponseDTO {
     private Long id;
     private AddressDTO addressDTO;

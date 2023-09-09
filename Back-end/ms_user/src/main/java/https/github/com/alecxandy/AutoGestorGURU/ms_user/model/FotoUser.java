@@ -1,12 +1,8 @@
 package https.github.com.alecxandy.AutoGestorGURU.ms_user.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
 
 @Setter
 @Getter
@@ -14,18 +10,14 @@ import org.springframework.web.multipart.MultipartFile;
 public class FotoUser {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    private String descricao;
-
+    private String nome;
     private String contentType;
-
     private Long tamanho;
 
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    private MultipartFile multipartFile;
 
 }

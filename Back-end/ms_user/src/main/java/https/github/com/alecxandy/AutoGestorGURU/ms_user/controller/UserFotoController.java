@@ -1,8 +1,11 @@
 package https.github.com.alecxandy.AutoGestorGURU.ms_user.controller;
 
+import https.github.com.alecxandy.AutoGestorGURU.ms_user.model.FotoUser;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.nio.file.Path;
 import java.util.UUID;
@@ -11,24 +14,14 @@ import java.util.UUID;
 @RequestMapping("/user/foto")
 public class UserFotoController {
 
-
-    @GetMapping
-    public String test(){
-        return "test ok";
-    }
-
     @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE) //receber apenas arquivo de midia
-    public void atualizarFoto(@RequestPart MultipartFile multipartFile) {
-
-        String nomeArquivo = UUID.randomUUID().toString() + "_" + multipartFile.getOriginalFilename();
-
+    public void atualizarFoto(@RequestParam FotoUser fotoUser) {
+        //nome do arquivo
+        String nomeArquivo = UUID.randomUUID().toString() + "_" + fotoUser.getMultipartFile().getOriginalFilename();
+        //caminho de transferencia do arquivo
         var arquivoFoto = Path.of("/Users/alec_/Desktop", nomeArquivo);
-
-        System.out.println(nomeArquivo);
-        System.out.println(multipartFile.getContentType());
-
         try {
-            multipartFile.transferTo(arquivoFoto);
+            fotoUser.getMultipartFile().transferTo(arquivoFoto);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

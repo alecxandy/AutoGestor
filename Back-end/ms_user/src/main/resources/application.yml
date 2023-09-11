@@ -5,6 +5,11 @@ spring:
   profiles:
     active: local #configuração local. Para rodar no docker é necessario retirar essa config
 
+  #Definindo tamanho maximo de arquivo recebido
+  #servlet:
+   # multipart:
+    #  max-file-size: 500KB
+
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://postgres-user-db:5432/user_db

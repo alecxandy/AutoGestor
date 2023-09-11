@@ -1,6 +1,6 @@
 package https.github.com.alecxandy.AutoGestorGURU.ms_user.service;
 
-import https.github.com.alecxandy.AutoGestorGURU.ms_user.model.FotoUser;
+import https.github.com.alecxandy.AutoGestorGURU.ms_user.model.ProfilePhoto;
 import https.github.com.alecxandy.AutoGestorGURU.ms_user.repository.FotoUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,12 +15,12 @@ public class FotoUserService {
     private FotoUserRepository fotoUserRepository;
 
     @Transactional
-    public FotoUser save(FotoUser fotoUserInput) {
-        return fotoUserRepository.save(fotoUserInput);
+    public ProfilePhoto save(ProfilePhoto profilePhotoInput) {
+        return fotoUserRepository.save(profilePhotoInput);
     }
 
     @Transactional
-    public List<FotoUser> findAll() {
+    public List<ProfilePhoto> findAll() {
         return fotoUserRepository.findAll();
     }
 

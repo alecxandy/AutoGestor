@@ -1,6 +1,6 @@
 package https.github.com.alecxandy.AutoGestorGURU.ms_user.controller;
 
-import https.github.com.alecxandy.AutoGestorGURU.ms_user.model.FotoUser;
+import https.github.com.alecxandy.AutoGestorGURU.ms_user.model.ProfilePhoto;
 import https.github.com.alecxandy.AutoGestorGURU.ms_user.service.FotoUserService;
 import https.github.com.alecxandy.AutoGestorGURU.ms_user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +22,13 @@ public class UserFotoController {
     private UserService userService;
 
     @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE) //receber apenas arquivo de midia
-    public void atualizarFoto(@RequestParam MultipartFile multipartFile) {
-
-        FotoUser fotoUser = new FotoUser();
-        fotoUser.setUser(userService.findById(2L));
-        fotoUser.setNome(multipartFile.getOriginalFilename());
-        fotoUser.setContentType(multipartFile.getContentType());
-        fotoUser.setTamanho(multipartFile.getSize());
-        fotoUserService.save(fotoUser);
-
+    public void updatePhoto(@RequestParam MultipartFile multipartFile) {
+        ProfilePhoto profilePhoto = new ProfilePhoto();
+        profilePhoto.setUser(userService.findById(2L));
+        profilePhoto.setNome(multipartFile.getOriginalFilename());
+        profilePhoto.setContentType(multipartFile.getContentType());
+        profilePhoto.setTamanho(multipartFile.getSize());
+        fotoUserService.save(profilePhoto);
         String nomeArquivo = UUID.randomUUID().toString() + "_" + multipartFile.getOriginalFilename();
         var arquivoFoto = Path.of("/Users/alec_/Desktop", nomeArquivo);
         try {
@@ -41,7 +39,7 @@ public class UserFotoController {
     }
 
     @GetMapping
-    public List<FotoUser> findAll() {
+    public List<ProfilePhoto> findAll() {
         return fotoUserService.findAll();
     }
 

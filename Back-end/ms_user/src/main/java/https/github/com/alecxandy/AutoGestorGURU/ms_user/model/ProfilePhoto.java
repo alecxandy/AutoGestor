@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-public class FotoUser {
+public class ProfilePhoto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -2,6 +2,7 @@ package https.github.com.alecxandy.AutoGestorGURU.msprofessor.service;
 
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.exception.IdentifierNotFoundException;
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.infra.AddressResourceClient;
+import https.github.com.alecxandy.AutoGestorGURU.msprofessor.infra.UserResourceClient;
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.dto.AddressDTO;
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.dto.TeachAddressDTO;
 import https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.dto.TeacherAddressResponseDTO;
@@ -22,6 +23,8 @@ public class TeacherService {
     @Autowired
     private AddressResourceClient addressResourceClient;
     @Autowired
+    private UserResourceClient userResourceClient;
+    @Autowired
     private ModelMapper modelMapper;
 
     public TeacherService(TeacherRepository teacherRepository, AddressResourceClient addressResourceClient, ModelMapper modelMapper) {
@@ -31,6 +34,9 @@ public class TeacherService {
     }
 
     public TeacherAddressResponseDTO save(TeachAddressDTO teachAddressDTO) {
+        userResourceClient.findById(teachAddressDTO.getUserDTO().getId());
+        addressResourceClient.findById(teachAddressDTO.getTeacher().getId());
+
         Teacher teacher = teachAddressDTO.getTeacher();
         AddressDTO addressDTO = teachAddressDTO.getAddressDTO();
         teacher.setAddress_id(addressResourceClient.save(addressDTO).getBody().longValue());

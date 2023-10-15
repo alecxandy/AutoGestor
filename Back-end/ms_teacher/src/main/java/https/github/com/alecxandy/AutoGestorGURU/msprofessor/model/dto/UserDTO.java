@@ -26,7 +26,4 @@ public class UserDTO {
     @CPF(message = "CPF invalid")
     private String cpf;
 
-    @NotBlank(message = "Please fill in the 'password' field correctly")
-    private String password;
-
 }

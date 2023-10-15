@@ -10,4 +10,5 @@ import lombok.*;
 public class TeachAddressDTO {
     private AddressDTO addressDTO;
     private Teacher teacher;
+    private UserDTO userDTO;
 }

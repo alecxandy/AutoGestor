@@ -16,8 +16,8 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private Long address_id;
-    private Long user_id;
     private String name;
     private String cpf;
     private String rg;

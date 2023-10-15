@@ -1,6 +1,5 @@
 package https.github.com.alecxandy.AutoGestorGURU.ms_student.model.entity;
 
-import https.github.com.alecxandy.AutoGestorGURU.ms_student.model.dto.AddressDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,4 +23,6 @@ public class Student {
     private String rg;
     private String renach;
     private LocalDate dt_renach;
+    private String status;
+    private String category;
 }

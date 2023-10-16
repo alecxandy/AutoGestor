@@ -20,7 +20,6 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-
     @Transactional
     public Page<Student> findAll(Pageable pageable) {
         return studentRepository.findAll(pageable);

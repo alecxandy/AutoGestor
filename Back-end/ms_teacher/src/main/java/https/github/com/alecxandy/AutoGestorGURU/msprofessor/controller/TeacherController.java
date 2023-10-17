@@ -16,7 +16,6 @@ public class TeacherController {
     @Autowired
     private TeacherService teacherService;
 
-
     @PostMapping
     public ResponseEntity<Teacher> save(@RequestBody @Valid Teacher teacher) {
         return ResponseEntity.status(HttpStatus.CREATED).body(teacherService.save(teacher));

@@ -1,9 +1,13 @@
 package https.github.com.alecxandy.AutoGestorGURU.msprofessor.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,10 +25,8 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull(message = "value cannot be null")
-    private Long address_id;
-
-    @NotNull(message = "value cannot be null")
+    @JsonProperty(namespace = "nome")
+    @NotBlank(message = "value cannot be null")
     private String name;
 
     @CPF(message = "invalid cpf")
@@ -33,6 +35,7 @@ public class Teacher {
     @Email(message = "invalid email")
     private String email;
 
+    @JsonProperty(namespace = "dataNascimento")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date birthDate;
 

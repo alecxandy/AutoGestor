@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CNPJ;
 
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,4 +35,11 @@ public class Company {
 
     @JsonProperty(namespace = "numeroDeTelefone")
     private String phoneNumber;
+
+    @ManyToMany
+    @JoinTable(name = "company_has_associate",
+            joinColumns = {@JoinColumn(name = "company_id")},
+            inverseJoinColumns = {@JoinColumn(name = "associate_id")})
+    private List<Associate> associateList;
+
 }

@@ -1,0 +1,36 @@
+
+spring:
+  application:
+    name: mscompany
+  profiles:
+    active: local #configuração local. Para rodar no docker é necessario retirar essa config
+
+  #Definindo tamanho maximo de arquivo recebido
+  #servlet:
+   # multipart:
+    #  max-file-size: 500KB
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres-company-db:5432/company_db
+    username: postgres
+    password: zxcvbnm123
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+server:
+  port: 0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

@@ -5,17 +5,16 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.2</version>
+		<version>3.1.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>https.github.com.alecxandy.AutoGestor</groupId>
-	<artifactId>ms_company</artifactId>
+	<groupId>https.github.com.alecxandy.AutoGestor.git</groupId>
+	<artifactId>ms_vehicle</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ms_company</name>
-	<description>Company</description>
+	<name>ms_vehicle</name>
+	<description>vehicle</description>
 	<properties>
 		<java.version>17</java.version>
-		<spring-cloud.version>2022.0.4</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>

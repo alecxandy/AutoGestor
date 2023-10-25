@@ -1,4 +1,4 @@
-# README - Sistema AutoGestor GURU (Spring Boot)
+# README - Sistema AutoGestor(Spring Boot)
 
 Bem-vindo(a) ao Sistema de Autoescola desenvolvido em Spring Boot! Este sistema é uma solução abrangente para o gerenciamento eficiente e simplificado de uma autoescola, desde a matrícula dos alunos até a obtenção da carteira de habilitação. Siga as instruções abaixo para configurar e utilizar o sistema corretamente.
 

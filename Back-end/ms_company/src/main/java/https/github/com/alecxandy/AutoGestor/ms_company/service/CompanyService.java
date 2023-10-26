@@ -46,8 +46,8 @@ public class CompanyService {
     }
 
     @Transactional
-    public Company findByCpf(String cpf) {
-        return companyRepository.findByCnpj(cpf).orElseThrow(() -> new IdentifierNotFoundException());
+    public Company findByCnpj(String cnpj) {
+        return companyRepository.findByCnpj(cnpj).orElseThrow(() -> new IdentifierNotFoundException());
     }
 
 

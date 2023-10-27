@@ -1,12 +1,7 @@
 package https.github.com.alecxandy.AutoGestor.ms_company.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import https.github.com.alecxandy.AutoGestor.ms_company.model.Associate;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.br.CNPJ;
 
 import java.util.List;
 
@@ -25,6 +20,5 @@ public class CompanyDTO {
     private String phoneNumber;
 
     private List<Integer> associateList;
-
 
 }

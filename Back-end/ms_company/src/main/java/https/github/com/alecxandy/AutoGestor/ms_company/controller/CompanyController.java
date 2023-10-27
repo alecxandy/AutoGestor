@@ -1,6 +1,7 @@
 package https.github.com.alecxandy.AutoGestor.ms_company.controller;
 
 import https.github.com.alecxandy.AutoGestor.ms_company.model.Company;
+import https.github.com.alecxandy.AutoGestor.ms_company.model.dto.CompanyDTO;
 import https.github.com.alecxandy.AutoGestor.ms_company.service.CompanyService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

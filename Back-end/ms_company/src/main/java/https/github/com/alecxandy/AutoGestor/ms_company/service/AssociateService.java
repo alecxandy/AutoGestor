@@ -2,7 +2,6 @@ package https.github.com.alecxandy.AutoGestor.ms_company.service;
 
 import https.github.com.alecxandy.AutoGestor.ms_company.exception.IdentifierNotFoundException;
 import https.github.com.alecxandy.AutoGestor.ms_company.model.Associate;
-import https.github.com.alecxandy.AutoGestor.ms_company.model.Company;
 import https.github.com.alecxandy.AutoGestor.ms_company.repository.AssociateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,7 +32,7 @@ public class AssociateService {
     @Transactional
     public Associate update(Associate associate) {
         return associateRepository.findById(associate.getId()).map(u -> {
-            associateRepository.save(associate);
+             associateRepository.save(associate);
             return u;
         }).orElseThrow(() -> new IdentifierNotFoundException());
     }

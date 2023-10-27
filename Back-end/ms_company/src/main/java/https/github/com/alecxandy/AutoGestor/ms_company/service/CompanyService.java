@@ -1,6 +1,7 @@
 package https.github.com.alecxandy.AutoGestor.ms_company.service;
 
 import https.github.com.alecxandy.AutoGestor.ms_company.exception.IdentifierNotFoundException;
+import https.github.com.alecxandy.AutoGestor.ms_company.model.Associate;
 import https.github.com.alecxandy.AutoGestor.ms_company.model.Company;
 import https.github.com.alecxandy.AutoGestor.ms_company.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +10,18 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CompanyService {
 
     @Autowired
     private CompanyRepository companyRepository;
+
+    @Autowired
+    private AssociateService associateService;
+
 
     public Company save(Company company) {
         return companyRepository.save(company);
@@ -48,6 +56,15 @@ public class CompanyService {
     @Transactional
     public Company findByCnpj(String cnpj) {
         return companyRepository.findByCnpj(cnpj).orElseThrow(() -> new IdentifierNotFoundException());
+    }
+
+    @Transactional
+    public List<Associate> convertToList(List<Integer> list) {
+        List<Associate> associateList = new ArrayList<>();
+        for (Integer i : list) {
+            associateList.add(associateService.findById(i.longValue()));
+        }
+        return associateList;
     }
 
 

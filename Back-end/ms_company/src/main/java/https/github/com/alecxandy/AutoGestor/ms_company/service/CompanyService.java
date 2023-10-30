@@ -3,6 +3,7 @@ package https.github.com.alecxandy.AutoGestor.ms_company.service;
 import https.github.com.alecxandy.AutoGestor.ms_company.exception.IdentifierNotFoundException;
 import https.github.com.alecxandy.AutoGestor.ms_company.model.Associate;
 import https.github.com.alecxandy.AutoGestor.ms_company.model.Company;
+import https.github.com.alecxandy.AutoGestor.ms_company.model.dto.CompanyDTO;
 import https.github.com.alecxandy.AutoGestor.ms_company.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,7 +24,13 @@ public class CompanyService {
     private AssociateService associateService;
 
 
-    public Company save(Company company) {
+    public Company save(CompanyDTO companyDTO) {
+        Company company = new Company();
+        company.setCnpj(companyDTO.getCnpj());
+        company.setCorporateReason(companyDTO.getCorporateReason());
+        company.setPhoneNumber(companyDTO.getPhoneNumber());
+        company.setFantasyName(companyDTO.getFantasyName());
+        company.setAssociateList(convertToList(companyDTO.getAssociateList()));
         return companyRepository.save(company);
     }
 

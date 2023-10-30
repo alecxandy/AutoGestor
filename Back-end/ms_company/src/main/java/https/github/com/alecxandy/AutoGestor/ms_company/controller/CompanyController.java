@@ -19,8 +19,8 @@ public class CompanyController {
     private CompanyService companyService;
 
     @PostMapping
-    public ResponseEntity<Company> save(@RequestBody @Valid Company company) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(companyService.save(company));
+    public ResponseEntity<Company> save(@RequestBody @Valid CompanyDTO companyDTO) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(companyService.save(companyDTO));
     }
 
     @GetMapping

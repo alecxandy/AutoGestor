@@ -41,10 +41,12 @@ public class CompanyController {
                 "successfully deleted");
     }
 
+/*
     @PutMapping
     public ResponseEntity<Company> update(@RequestBody @Valid Company company) {
         return ResponseEntity.status(HttpStatus.OK).body(companyService.update(company));
     }
+*/
 
     @GetMapping("/search")
     public ResponseEntity<Company> findByCnpj(@RequestParam(name = "cnpj", required = true) String cnpj) {

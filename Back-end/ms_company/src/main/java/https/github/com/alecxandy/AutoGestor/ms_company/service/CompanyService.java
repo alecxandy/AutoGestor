@@ -45,10 +45,16 @@ public class CompanyService {
     }
 
     @Transactional
-    public Company update(Company company) {
-        return companyRepository.findById(company.getId()).map(u -> {
+    public Company update(CompanyDTO companyDTO) {
+        return companyRepository.findById(companyDTO.getId()).map(company -> {
+            company.setId(companyDTO.getId());
+            company.setCnpj(companyDTO.getCnpj());
+            company.setCorporateReason(companyDTO.getCorporateReason());
+            company.setPhoneNumber(companyDTO.getPhoneNumber());
+            company.setFantasyName(companyDTO.getFantasyName());
+            company.setAssociateList(convertToList(companyDTO.getAssociateList()));
             companyRepository.save(company);
-            return u;
+            return company;
         }).orElseThrow(() -> new IdentifierNotFoundException());
     }
 

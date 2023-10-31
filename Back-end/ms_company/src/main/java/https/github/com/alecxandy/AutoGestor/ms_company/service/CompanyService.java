@@ -4,6 +4,7 @@ import https.github.com.alecxandy.AutoGestor.ms_company.exception.IdentifierNotF
 import https.github.com.alecxandy.AutoGestor.ms_company.model.Associate;
 import https.github.com.alecxandy.AutoGestor.ms_company.model.Company;
 import https.github.com.alecxandy.AutoGestor.ms_company.model.dto.CompanyDTO;
+import https.github.com.alecxandy.AutoGestor.ms_company.model.dto.CompanyUpdatePartnerDTO;
 import https.github.com.alecxandy.AutoGestor.ms_company.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -78,6 +79,14 @@ public class CompanyService {
             associateList.add(associateService.findById(i.longValue()));
         }
         return associateList;
+    }
+
+    @Transactional
+    public Company updatePartner(CompanyUpdatePartnerDTO companyUpdatePartnerDTO) {
+        return companyRepository.findById(companyUpdatePartnerDTO.getCompanyId()).map(company -> {
+            company.setAssociateList(convertToList(companyUpdatePartnerDTO.getIntegerList()));
+            return company;
+        }).orElseThrow(() -> new IdentifierNotFoundException());
     }
 
 

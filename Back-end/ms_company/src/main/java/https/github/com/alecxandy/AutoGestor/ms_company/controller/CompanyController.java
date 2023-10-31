@@ -2,6 +2,7 @@ package https.github.com.alecxandy.AutoGestor.ms_company.controller;
 
 import https.github.com.alecxandy.AutoGestor.ms_company.model.Company;
 import https.github.com.alecxandy.AutoGestor.ms_company.model.dto.CompanyDTO;
+import https.github.com.alecxandy.AutoGestor.ms_company.model.dto.CompanyUpdatePartnerDTO;
 import https.github.com.alecxandy.AutoGestor.ms_company.service.CompanyService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,9 @@ public class CompanyController {
         return ResponseEntity.status(HttpStatus.OK).body(companyService.findByCnpj(cnpj));
     }
 
+    @PatchMapping
+    public ResponseEntity<Company> updatePartner(@RequestBody @Valid CompanyUpdatePartnerDTO companyUpdatePartnerDTO) {
+        return ResponseEntity.status(HttpStatus.OK).body(companyService.updatePartner(companyUpdatePartnerDTO));
+    }
 
 }

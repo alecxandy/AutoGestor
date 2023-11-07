@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: msvehicle
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/vehicle_db
+    username: postgres
+    password: Cola132305
+
+  #Definindo tamanho maximo de arquivo recebido
+  #servlet:
+   # multipart:
+    #  max-file-size: 500KB
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+server:
+  port: 0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+
